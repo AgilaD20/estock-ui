@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { companyDetails } from 'src/app/models/companyDetails';
+import { StockDetails } from 'src/app/models/StockDetails';
+import { StockInfo } from 'src/app/models/StockInfo';
 import { CompanyService } from 'src/app/services/company-service.service';
 import { SelectedDataService } from 'src/app/services/selected-data.service';
+import { StockServiceService } from 'src/app/services/stock-service.service';
 
 class PeriodicElement{
   position: number=0;
@@ -34,10 +37,20 @@ export class CompanyDetailsComponent implements OnInit {
 
 
   companyDetails : companyDetails = new companyDetails;
+
+  stockDetailsArray : StockDetails[] = [];
+
+  stockAvailable : Boolean = false;
+
+  stockInfoAvailable : Boolean = false;
+
+  stockInfo : StockInfo = new StockInfo;
  
-  constructor(private companyService: CompanyService, private selectedDataService : SelectedDataService) { }
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  constructor(private companyService: CompanyService, private selectedDataService : SelectedDataService,private stockService: StockServiceService) { }
+  displayedColumns: string[] = ['Stock', 'Date'];
   dataSource = ELEMENT_DATA;
+  from : Date = new Date;
+  to : Date = new Date;
 
 
   ngOnInit(): void {
@@ -49,6 +62,27 @@ export class CompanyDetailsComponent implements OnInit {
   setCompanyDetails(companyDetails : companyDetails){
     this.companyDetails=companyDetails;
     console.log(this.companyDetails);
+  }
+
+  searchstocks(){
+    const promise= this.stockService.getStock(this.companyDetails.companyCode,this.from,this.to);
+    promise.subscribe(data=>{
+      this.assignToArray(data);
+    });
+    const data = this.stockService.getStockInfo(this.companyDetails.companyCode,this.from,this.to);
+    data.subscribe(result=>{
+      this.assignToInfo(result);
+    });
+
+  }
+  assignToInfo(result: StockInfo) {
+    this.stockInfo = result;
+    this.stockInfoAvailable = true;
+  }
+  assignToArray(data: StockDetails[]) {
+    this.stockDetailsArray = data;
+    this.stockAvailable = true;
+     
   }
 
   
