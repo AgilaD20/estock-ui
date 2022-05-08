@@ -1,9 +1,11 @@
 export class companyDetails{
-    "CompanyCode":String="";
-    "CompanyName":String="";
-    "CompanyCEO" : String ="";
-    "CompanyTurnover" : String ="";
-    "Company Website" : String="";
+    "companyCode":String="";
+    "companyName":String="";
+    "ceo" : String ="";
+    "companyTurnover" : number;
+    "companyWebsiteUrl" : String="";
     "stockExchange" : String= "";
+    "stockPrice": number;
    
 }
+

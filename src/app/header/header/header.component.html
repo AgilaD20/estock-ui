@@ -8,8 +8,8 @@
         </ul>
         <div >
           <div class="input-group">
-            <input type="search" class="form-control rounded" placeholder="Company Code" aria-label="Search" aria-describedby="search-addon" />
-          <button type="button" class="btn btn-primary">search</button>
+            <input type="search" class="form-control rounded" placeholder="Company Code" aria-label="Search" aria-describedby="search-addon" [(ngModel)]="companycode" />
+          <button type="button" class="btn btn-primary" (click)="searchCompany()">search</button>
           </div>
           
         </div>

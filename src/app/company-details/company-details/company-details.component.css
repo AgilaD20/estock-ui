@@ -1,0 +1,29 @@
+table {
+    width: 100%;
+    
+  }
+
+  mat-card{
+    margin-top: 10px;
+    width: 80%;
+    background-color: #EBF5FB;
+    margin-left: auto;
+    margin-right:auto;
+  }
+
+  .card{
+    background-color: #EBF5FB;
+    margin-left: auto;
+    margin-right:auto;
+  }
+
+  table{
+    width: 800px;
+    margin-left: auto;
+    margin-right:auto;
+    margin-top: 10px;
+}
+  th{
+    background-color: #4675e0;
+
+  }

@@ -5,13 +5,13 @@ import { companyDetails } from '../models/companyDetails';
 @Injectable({
   providedIn: 'root'
 })
-export class CompanyRegistrationServiceService {
+export class CompanyService {
 
-  private COMPANY_URL: string="http://localhost/api/v1.0/";
+  private COMPANY_URL: string="http://localhost:8082/api/v1.0/market/company";
 
   constructor(private http: HttpClient) { }
 
-  addCompany(companyDetails : companyDetails){
-    return this.http.post<companyDetails>(this.COMPANY_URL+"/register",companyDetails);
+  getCompany(companycode : String){
+    return this.http.get<companyDetails>(this.COMPANY_URL+"/info/"+companycode);
   }
 }
