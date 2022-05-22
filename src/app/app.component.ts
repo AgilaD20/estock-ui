@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'estock-ui';
+  loggedIn: Boolean =false;
+
+  changeStatus(newStatus: Boolean){
+    this.loggedIn = newStatus;
+  }
+
 }

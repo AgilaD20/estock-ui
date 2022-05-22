@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { companyDetails } from 'src/app/models/companyDetails';
 import { CompanyService } from 'src/app/services/company-service.service';
 import { Router } from '@angular/router';
 import { SelectedDataService } from 'src/app/services/selected-data.service';
+import RegistrationService from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-header',
@@ -15,9 +16,21 @@ export class HeaderComponent implements OnInit {
   companyDetails : companyDetails | undefined;
   noCompany: Boolean=false;
 
-  constructor(private companyService: CompanyService,private router: Router,private selectedService: SelectedDataService) { }
+  constructor(private companyService: CompanyService,private router: Router,private selectedService: SelectedDataService,private registrationService: RegistrationService) {
+  registrationService.currrentlyLoggedIn.subscribe(data=>this.setCurrentlyLoggedIn(data));
+   }
+  setCurrentlyLoggedIn(data: Boolean): void {
+   this.loggedIn=data;
+  }
+
+  loggedIn: Boolean = false;
+
+ 
 
   ngOnInit(): void {
+    if(sessionStorage.getItem("loggedin")=="true"){
+      this.loggedIn=true;
+    }
   }
 
   searchCompany(){
@@ -34,6 +47,11 @@ export class HeaderComponent implements OnInit {
 
     this.router.navigateByUrl("/showcompany");
 
+  }
+
+  logout(){
+    this.registrationService.userlogout();
+  
   }
 
 }

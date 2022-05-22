@@ -57,12 +57,22 @@ export class CompanyDetailsComponent implements OnInit {
     this.selectedDataService.currentlySelectedCompany.subscribe(data=>{
       this.setCompanyDetails(data);
     })
+    this.companyService.clearTable.subscribe(data=>this.setClearTable(data));
+  }
+  setClearTable(data: Boolean): void {
+    if(data){
+      this.stockDetailsArray = [];
+      this.stockAvailable = false;
+      this.stockInfo = new StockInfo;
+      this.stockInfoAvailable= false;
+    }
   }
 
   setCompanyDetails(companyDetails : companyDetails){
     this.companyDetails=companyDetails;
     console.log(this.companyDetails);
   }
+
 
   searchstocks(){
     const promise= this.stockService.getStock(this.companyDetails.companyCode,this.from,this.to);
