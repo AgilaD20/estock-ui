@@ -53,4 +53,4 @@ jobs:
           app-name: 'hackfse2estock'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A17346963C50403385EA66EE4A2D1DD5 }}
-          package: ./dist/estock-ui
+          package: .
