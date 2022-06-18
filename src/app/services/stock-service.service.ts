@@ -8,7 +8,7 @@ import { StockInfo } from '../models/StockInfo';
 })
 export class StockServiceService {
 
-  private Stock_URL: string="http://localhost:8081/stock-manager-service/api/v1.0/market/stock";
+  private Stock_URL: string="http://hackfse2-agila-gateway.westus.azurecontainer.io:8080/stock-manager-service/api/v1.0/market/stock";
 
   constructor(private http: HttpClient) { }
 
