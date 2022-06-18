@@ -19,7 +19,7 @@ export default class RegistrationService {
 
 
     currentStatusLogin = new BehaviorSubject(this.loggedIn);
-    private GATEWAY_URL: string="http://localhost:8081/api/v1.0/gateway/market";
+    private GATEWAY_URL: string="http://hackfse2-agila-gateway.westus.azurecontainer.io:8080/api/v1.0/gateway/market";
     
 
     constructor(private http: HttpClient, private cookieService: CookieService, private router: Router) {
