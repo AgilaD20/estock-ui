@@ -7,7 +7,7 @@ import { companyDetails } from '../models/companyDetails';
 })
 export class CompanyService {
 
-  private COMPANY_URL: string="http://localhost:8081/company-details-service/api/v1.0/market/company";
+  private COMPANY_URL: string="http://hackfse2-agila-gateway.westus.azurecontainer.io:8080/company-details-service/api/v1.0/market/company";
 
   constructor(private http: HttpClient) { }
 
