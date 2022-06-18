@@ -53,4 +53,4 @@ jobs:
           app-name: 'hackfse-agila-estock-ui'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_94573A47E04040F0A9F49280BF6B93EA }}
-          package: .
+          package: ./dist/estock-ui
